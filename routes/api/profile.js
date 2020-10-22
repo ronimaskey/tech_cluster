@@ -164,5 +164,64 @@ router.delete('/', auth, async (req, res) => {
     }
 });
 
+// @route  PUT api/profile/ workexperience
+// @desc   Add profile  workexperience
+// @access Private
+router.put('/workexperience', [auth,
+    [
+        check('title', 'Title is empty')
+        .not()
+        .isEmpty(),
+        check('company', 'Company Name is empty')
+        .not()
+        .isEmpty(),
+        check('location', 'Location is empty')
+        .not()
+        .isEmpty(),
+        check('from', 'Start date is empty')
+        .not()
+        .isEmpty(),
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            return res.status(400).json({ errors:errors.array });
+        }
+        const {
+            title,
+            company,
+            location,
+            from,
+            to,
+            current,
+            description
+        } = req.body;
+
+        const newExp = {
+            title,
+            company,
+            location,
+            from,
+            to,
+            current,
+            description
+        } 
+        try{
+            const profile = await Profile.findOne( {user:req.user.id} );
+
+            profile.workexperience.unshift(newExp);
+
+            await profile.save();
+
+            res.json(profile);
+        } catch (err){
+            console.error(err.message);
+            res.status(500).send('Server error');
+        }
+    }
+], 
+async (req, res) => {
+
+});
 
 module.exports = router;
