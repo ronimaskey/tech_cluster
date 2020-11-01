@@ -58,7 +58,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
     }
 };
 
-// Add Experience
+// Add WorkExperience
 export const addExperience = (formData, history) => async dispatch => {
     try {
         const config = {
@@ -66,7 +66,7 @@ export const addExperience = (formData, history) => async dispatch => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.put('/api/profile/experience', formData, config);
+        const res = await axios.put('/api/profile/workexperience', formData, config);
 
         dispatch({
             type: UPDATE_PROFILE,
