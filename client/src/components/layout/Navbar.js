@@ -30,7 +30,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-            <i className="fas fa-user"></i> FriendCircle
+            <i className="fas fa-user"></i> TechCluster
         </Link>    
       </h1>
 

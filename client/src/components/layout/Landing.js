@@ -13,9 +13,9 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
     <div className="dark-overlay">
       <div className="landing-inner">
-        <h1 className="x-large">Friend Circle</h1>
+        <h1 className="x-large">TechCluster</h1>
         <p className="lead">
-          Get connected to know your friends.
+          Get connected to TechCluster.
         </p>
         <div className="buttons">
           <Link to="/register" className="btn btn-primary">Sign Up</Link>
